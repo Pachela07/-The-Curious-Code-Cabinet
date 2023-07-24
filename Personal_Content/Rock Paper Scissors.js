@@ -1,3 +1,10 @@
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
 const getUserChoice = (userInput) => {
   userInput = userInput.toLowerCase();
   if (
@@ -8,6 +15,7 @@ const getUserChoice = (userInput) => {
     return userInput;
   } else {
     console.log("That's an invalid input");
+    return null;
   }
 };
 
@@ -37,11 +45,21 @@ const determineWinner = (userChoice, computerChoice) => {
 };
 
 const playGame = () => {
-  let userChoice = getUserChoice("rock"); // Provide the user choice here
-  let computerChoice = getComputerChoice();
-  console.log("The user has taken " + userChoice);
-  console.log("The computer has taken " + computerChoice);
-  console.log(determineWinner(userChoice, computerChoice));
+  rl.question(
+    "Enter your choice (rock, paper, or scissors): ",
+    function (userInput) {
+      const userChoice = getUserChoice(userInput);
+      if (userChoice) {
+        const computerChoice = getComputerChoice();
+        console.log("The user has taken " + userChoice);
+        console.log("The computer has taken " + computerChoice);
+        console.log(determineWinner(userChoice, computerChoice));
+      }
+      rl.close();
+    }
+  );
 };
 
+console.log("Welcome to Rock-Paper-Scissors Game!");
 playGame();
+
