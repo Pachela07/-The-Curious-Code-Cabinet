@@ -1,6 +1,6 @@
 // Use your tmdbKey to fetch movie info from tmdb https://www.themoviedb.org/
 
-const tmdbKey = "ff00ad48e476bd677fd78c53c75346e7";
+const tmdbKey = "GET YOUR API KEY IN THE SITE ABOVE";
 const tmdbBaseUrl = "https://api.themoviedb.org/3";
 const playBtn = document.getElementById("playBtn");
 
